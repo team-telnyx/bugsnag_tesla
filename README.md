@@ -9,9 +9,7 @@ This module implements a `Bugsnag.HTTPClient` adapter for `Tesla`.
 defp deps do
   [
     {:bugsnag, "~> 2.1.0"},
-    # as usual, pick ONE of these JSON encoding libraries:
-    {:jason, "~> 1.0"},
-    {:poison, "~> 4.0"}
+    ...
     # add bugsnag_tesla here:
     {:bugsnag_tesla, "~> 1.0"},
   ]
