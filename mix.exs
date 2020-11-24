@@ -26,7 +26,8 @@ defmodule BugsnagTesla.MixProject do
     [
       {:bugsnag, "~> 3.0"},
       {:tesla, "~> 1.3"},
-      {:jason, "~> 1.0", optional: true}
+      {:jason, "~> 1.0", optional: true},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
