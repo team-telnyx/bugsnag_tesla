@@ -8,7 +8,7 @@ This module implements a `Bugsnag.HTTPClient` adapter for `Tesla`.
 # mix.exs
 defp deps do
   [
-    {:bugsnag, "~> 2.1.0"},
+    {:bugsnag, "~> 3.0"},
     ...
     # add bugsnag_tesla here:
     {:bugsnag_tesla, "~> 1.0"},

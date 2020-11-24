@@ -4,7 +4,7 @@ defmodule BugsnagTesla.MixProject do
   def project do
     [
       app: :bugsnag_tesla,
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -24,8 +24,7 @@ defmodule BugsnagTesla.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:bugsnag,
-       github: "bugsnag-elixir/bugsnag-elixir", tag: "84b8491e5a74fd667c707d2ecb918c746cf4d16d"},
+      {:bugsnag, "~> 3.0"},
       {:tesla, "~> 1.3"},
       {:jason, "~> 1.0", optional: true}
     ]
