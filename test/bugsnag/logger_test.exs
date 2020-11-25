@@ -1,10 +1,6 @@
 defmodule Bugsnag.LoggerTest do
   use ExUnit.Case, async: false
 
-  alias Bugsnag.HTTPClient.Request
-  alias Bugsnag.HTTPClient.Response
-  import ExUnit.CaptureLog
-
   @receive_timeout 2_000
 
   setup_all do

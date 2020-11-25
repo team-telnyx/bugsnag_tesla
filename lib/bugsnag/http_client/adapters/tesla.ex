@@ -2,26 +2,25 @@ defmodule Bugsnag.HTTPClient.Adapters.Tesla do
   @moduledoc """
   Tesla adapter for Bugsnag.HTTPClient
   """
-  alias Bugsnag.HTTPClient
+  @behaviour Bugsnag.HTTPClient
+
+  use Tesla, only: [:request], docs: false
+
   alias Bugsnag.HTTPClient.Request
   alias Bugsnag.HTTPClient.Response
 
-  @behaviour HTTPClient
+  plug Tesla.Middleware.JSON
 
-  @adapter Application.get_env(:bugsnag_tesla, :adapter, Tesla.Adapter.Httpc)
-
-  @impl true
+  @impl Bugsnag.HTTPClient
   def post(%Request{} = request) do
-    middleware = [
-      Tesla.Middleware.JSON
+    [
+      method: :post,
+      url: request.url,
+      body: request.body,
+      headers: request.headers,
+      opts: request.opts
     ]
-
-    adapter = {@adapter, []}
-
-    client = Tesla.client(middleware, adapter)
-
-    client
-    |> Tesla.post(request.url, request.body, headers: request.headers, opts: request.opts)
+    |> request()
     |> case do
       {:ok, %{body: body, headers: headers, status: status}} ->
         {:ok, Response.new(status, headers, body)}

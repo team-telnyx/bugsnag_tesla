@@ -26,10 +26,23 @@ config :bugsnag,
   http_client: Bugsnag.HTTPClient.Adapters.Tesla
 ```
 
-So far, the only way to configure `bugsnag_tesla` adapter is globally through a config like:
+## Configuring Tesla adapters
+
+You have two ways to configure `Tesla` adapters:
+* Using per module configuration;
+* Using global `Tesla` configuration.
+
+If you want to use a specific `Tesla` adapter for `Bugsnag`, do:
 
 ```elixir
 # config/config.exs
+config :tesla, Bugsnag.HTTPClient.Adapters.Tesla,
+  adapter: Tesla.Adapter.Httpc
+```
 
-config :bugsnag_tesla, adapter: Tesla.Adapter.Hackney
+If you prefer to use a single adapter for every `Tesla` use on your app, do as usual:
+
+```elixir
+# config/config.exs
+config :tesla, adapter: Tesla.Adapter.Httpc
 ```
