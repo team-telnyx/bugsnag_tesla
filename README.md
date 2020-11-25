@@ -31,5 +31,5 @@ So far, the only way to configure `bugsnag_tesla` adapter is globally through a 
 ```elixir
 # config/config.exs
 
-config :tesla, adapter: Tesla.Adapter.Hackney
+config :bugsnag_tesla, adapter: Tesla.Adapter.Hackney
 ```

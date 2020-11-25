@@ -8,13 +8,17 @@ defmodule Bugsnag.HTTPClient.Adapters.Tesla do
 
   @behaviour HTTPClient
 
+  @adapter Application.get_env(:bugsnag_tesla, :adapter, Tesla.Adapter.Httpc)
+
   @impl true
   def post(%Request{} = request) do
     middleware = [
       Tesla.Middleware.JSON
     ]
 
-    client = Tesla.client(middleware)
+    adapter = {@adapter, []}
+
+    client = Tesla.client(middleware, adapter)
 
     client
     |> Tesla.post(request.url, request.body, headers: request.headers, opts: request.opts)
