@@ -4,7 +4,9 @@ defmodule Bugsnag.HTTPClient.Adapters.Tesla do
   """
   @behaviour Bugsnag.HTTPClient
 
-  use Tesla, only: [:request], docs: false
+  # We don't want any method expansion here as we'll be using request/1
+  # directly, that's why we use `only: []`.
+  use Tesla, only: [], docs: false
 
   alias Bugsnag.HTTPClient.Request
   alias Bugsnag.HTTPClient.Response
