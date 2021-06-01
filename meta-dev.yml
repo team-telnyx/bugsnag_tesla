@@ -1,0 +1,9 @@
+names:
+    service: bugsnag_tesla
+project:
+    squad: telephony.backend.squad
+    primary_maintainer: guilherme
+    public_api: false
+    private_api: false
+
+alerts: {}
